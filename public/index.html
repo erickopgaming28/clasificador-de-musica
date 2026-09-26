@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clasificador de Música</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">◉</span>
+      <div>
+        <h1>Clasificador de Música</h1>
+        <p class="sub">Tu música por género, estilo, ánimo, ocasión y época</p>
+      </div>
+    </div>
+    <div id="user" class="user"></div>
+  </header>
+
+  <main>
+    <!-- Configuración / login -->
+    <section id="setup" class="card hidden">
+      <h2>Conecta tu Spotify</h2>
+      <div id="setup-body"></div>
+    </section>
+
+    <!-- Escaneo -->
+    <section id="scan" class="card hidden">
+      <div class="scan-row">
+        <div>
+          <h2>1. Analizar tu música</h2>
+          <p class="muted" id="scan-info"></p>
+        </div>
+        <div class="scan-actions">
+          <label class="check"><input type="checkbox" id="opt-playlists" checked /> Incluir mis playlists (además de “Tus me gusta”)</label>
+          <label class="check"><input type="checkbox" id="opt-reclasificar" /> Volver a clasificar todo desde cero</label>
+          <button id="btn-scan" class="btn primary">Escanear y clasificar</button>
+        </div>
+      </div>
+      <div id="progress" class="progress hidden">
+        <div class="progress-label"><span id="progress-fase"></span><span id="progress-num"></span></div>
+        <div class="bar"><div id="progress-bar"></div></div>
+        <pre id="progress-log"></pre>
+      </div>
+    </section>
+
+    <!-- Resultados -->
+    <section id="results" class="hidden">
+      <div class="results-head">
+        <h2>2. Tus nuevas playlists</h2>
+        <div class="controls">
+          <div class="tabs" id="tabs"></div>
+          <label class="min">Mínimo de canciones
+            <input type="range" id="min" min="1" max="30" value="5" /> <b id="min-val">5</b>
+          </label>
+          <input type="search" id="buscar" placeholder="Buscar playlist…" />
+          <button class="btn ghost" id="sel-todo">Seleccionar todo</button>
+          <button class="btn ghost" id="sel-nada">Quitar todo</button>
+        </div>
+      </div>
+      <div id="stats" class="stats"></div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer id="bar" class="bottombar hidden">
+    <span id="bar-info"></span>
+    <button id="btn-crear" class="btn primary">Crear en Spotify</button>
+  </footer>
+
+  <dialog id="modal">
+    <div class="modal-head">
+      <input id="modal-nombre" class="modal-nombre" />
+      <button class="btn ghost" id="modal-cerrar">Cerrar</button>
+    </div>
+    <p class="muted" id="modal-info"></p>
+    <ul id="modal-lista" class="tracklist"></ul>
+  </dialog>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
